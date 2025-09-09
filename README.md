@@ -53,21 +53,22 @@ python3 scripts/bench.py
 
 ### M1: Scalar AXPY Performance (Apple M3)
 
-| Vector Size | Time (ms) | GFLOPS | Bandwidth (GB/s) |
-|-------------|-----------|--------|------------------|
-| 1K          | 0.000     | 32.8   | 196.9            |
-| 4K          | 0.000     | 33.9   | 203.1            |
-| 16K         | 0.001     | 35.2   | 211.4            |
-| 64K         | 0.006     | 20.9   | 125.6            |
-| 256K        | 0.024     | 21.6   | 129.7            |
-| 1M          | 0.097     | 21.6   | 129.7            |
-| 4M          | 0.497     | 16.9   | 101.2            |
-| 16M         | 2.684     | 12.5   | 75.0             |
+| Vector Size | Time (ms) | GFLOPS | Bandwidth (GB/s) | Time/Element (ns) |
+|-------------|-----------|--------|------------------|-------------------|
+| 1K          | 0.000     | 41.9   | 251.4            | 0.0               |
+| 4K          | 0.000     | 36.2   | 217.1            | 0.0               |
+| 16K         | 0.001     | 36.8   | 220.6            | 0.1               |
+| 64K         | 0.006     | 22.3   | 134.0            | 0.1               |
+| 256K        | 0.024     | 21.8   | 131.0            | 0.1               |
+| 1M          | 0.098     | 21.4   | 128.3            | 0.1               |
+| 4M          | 0.505     | 16.6   | 99.6             | 0.1               |
+| 16M         | 2.663     | 12.6   | 75.6             | 0.2               |
 
 **Key Insights:**
-- Peak performance: ~35 GFLOPS at 16K elements
-- Sustained bandwidth: ~130 GB/s
-- Performance degrades with larger vectors due to cache effects
+- Peak performance: ~37 GFLOPS at 16K elements
+- Peak bandwidth: ~250 GB/s for small vectors, ~130 GB/s sustained
+- Time per element: ~0.1-0.2 ns, showing excellent cache efficiency
+- Performance degrades with larger vectors due to cache hierarchy effects
 - Baseline established for vectorized implementation comparison
 
 ## Requirements

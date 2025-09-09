@@ -54,9 +54,11 @@ class BenchmarkRunner:
         in_table = False
         
         for line in lines:
-            if "Size\tTime(ms)" in line or "----\t--------" in line:
+            if "Size" in line and "Time(ms)" in line:
                 in_table = True
                 continue
+            elif "----" in line and "--------" in line:
+                continue  # Skip separator line
             elif in_table and line.strip() and not line.startswith("==="):
                 data_lines.append(line)
             elif line.startswith("==="):
@@ -69,7 +71,8 @@ class BenchmarkRunner:
             
             for line in data_lines:
                 if line.strip():
-                    parts = line.split('\t')
+                    # Split by whitespace and filter out empty strings
+                    parts = [p for p in line.split() if p]
                     if len(parts) >= 4:
                         try:
                             size = int(parts[0])
@@ -161,7 +164,7 @@ class BenchmarkRunner:
             
             # Plot 4: Speedup comparison
             plt.subplot(2, 2, 4)
-            if 'scalar' in data:
+            if 'scalar' in data and len(data) > 1:
                 scalar_data = data['scalar']
                 for impl_name, impl_data in data.items():
                     if impl_name != 'scalar' and impl_data.size > 0:
@@ -170,12 +173,29 @@ class BenchmarkRunner:
                         impl_times = impl_data[:, 1]
                         speedup = scalar_times / impl_times
                         plt.semilogx(sizes, speedup, 'o-', label=f'{impl_name} vs scalar', linewidth=2)
-            
-            plt.xlabel('Vector Size')
-            plt.ylabel('Speedup')
-            plt.title('Speedup vs Scalar Implementation')
-            plt.legend()
-            plt.grid(True, alpha=0.3)
+                
+                plt.xlabel('Vector Size')
+                plt.ylabel('Speedup')
+                plt.title('Speedup vs Scalar Implementation')
+                plt.legend()
+                plt.grid(True, alpha=0.3)
+            else:
+                # Only scalar data available - show time per element instead
+                if 'scalar' in data and data['scalar'].size > 0:
+                    scalar_data = data['scalar']
+                    sizes = scalar_data[:, 0]
+                    times = scalar_data[:, 1]
+                    time_per_element = (times * 1000) / sizes  # Convert to nanoseconds per element
+                    plt.semilogx(sizes, time_per_element, 'o-', color='red', linewidth=2, label='Time per Element')
+                    plt.xlabel('Vector Size')
+                    plt.ylabel('Time per Element (ns)')
+                    plt.title('Time per Element vs Vector Size')
+                    plt.legend()
+                    plt.grid(True, alpha=0.3)
+                else:
+                    plt.text(0.5, 0.5, 'No data available\nfor speedup comparison', 
+                            ha='center', va='center', transform=plt.gca().transAxes)
+                    plt.title('Speedup vs Scalar Implementation')
             
             plt.tight_layout()
             plt.savefig(self.results_dir / 'performance_comparison.png', dpi=300, bbox_inches='tight')

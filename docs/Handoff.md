@@ -83,9 +83,10 @@ Generated in `results/scalar_results.csv` with columns:
 - Bandwidth_GB_s: Memory bandwidth in GB/s
 
 ### Performance Characteristics
-- **Peak Performance**: ~35 GFLOPS at 16K elements
-- **Memory Bandwidth**: ~130 GB/s sustained
+- **Peak Performance**: ~37 GFLOPS at 16K elements
+- **Memory Bandwidth**: ~250 GB/s peak, ~130 GB/s sustained
 - **Scaling**: Performance degrades with larger vectors due to cache effects
+- **Time per Element**: ~0.1-0.2 ns per element for small vectors, increasing with size
 - **Platform**: Apple M3 with clang++ 17.0.0
 
 ### Key Implementation Details
@@ -94,6 +95,8 @@ Generated in `results/scalar_results.csv` with columns:
 - Comprehensive test coverage including edge cases
 - Modular design ready for vectorized implementations
 - ARM-optimized compiler flags for Apple Silicon
+- **Improved Python Benchmarking**: Fixed CSV parsing and enhanced visualization
+- **4-Plot Analysis**: Time scaling, GFLOPS performance, memory bandwidth, and time-per-element efficiency
 
 ---
 
@@ -108,6 +111,8 @@ Generated in `results/scalar_results.csv` with columns:
 **Q4: Memory Bandwidth**: Our benchmark shows ~130 GB/s memory bandwidth. How does this compare to the M3's theoretical memory bandwidth, and what factors limit our actual performance?
 
 **Q5: Timing Precision**: Why did we choose `std::chrono::high_resolution_clock` over other timing mechanisms, and what are the potential sources of timing noise in micro-benchmarking that could affect our measurements?
+
+**Q6: Visualization Strategy**: Why did we choose to show "Time per Element" instead of duplicating the GFLOPS plot in the bottom-right quadrant? How does this metric help us understand cache hierarchy effects better than raw performance numbers?
 
 ---
 
