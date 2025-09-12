@@ -1,5 +1,7 @@
 # ARM Vector Benchmark Lab
 
+> 🚧 **Work in Progress** - This project is actively under development. Current status: M1 (Scalar AXPY) complete. See [ROADMAP.md](docs/ROADMAP.md) for development timeline.
+
 A comprehensive benchmarking suite for vector operations on Apple Silicon (M3) processors, comparing scalar, auto-vectorized, NEON intrinsics, and Accelerate framework implementations.
 
 ## Quick Start
@@ -38,16 +40,21 @@ python3 scripts/bench.py
 - `scripts/`: Python scripts for comprehensive benchmarking and visualization
 - `results/`: Generated benchmark results and plots
 
-## Milestones
+## Development Status
 
-- **v0.1-scalar**: Basic AXPY scalar implementation
-- **v0.2-autovec**: Compiler auto-vectorization
-- **v0.3-neon**: Manual NEON intrinsics
+### Completed Milestones ✅
+- **v0.1-scalar**: Basic AXPY scalar implementation with comprehensive testing and benchmarking
+
+### Planned Milestones 📋
+- **v0.2-autovec**: Compiler auto-vectorization analysis
+- **v0.3-neon**: Manual NEON intrinsics implementation
 - **v0.4-compare-accelerate**: Accelerate framework integration
 - **v0.5-memory-patterns**: Memory access analysis
 - **v0.6-multi-threaded**: OpenMP parallelization
 - **v0.7-optimization**: Advanced optimizations
-- **v0.8-comprehensive**: Full benchmark suite
+- **v0.8-comprehensive**: Full benchmark suite and visualization
+
+See [ROADMAP.md](docs/ROADMAP.md) for detailed development timeline and [Handoff.md](docs/Handoff.md) for milestone documentation.
 
 ## Results
 
