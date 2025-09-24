@@ -1,8 +1,8 @@
 # ARM Vector Benchmark Lab
 
-> 🚧 **Work in Progress** - This project is actively under development. Current status: M1 (Scalar AXPY) complete. See [ROADMAP.md](docs/ROADMAP.md) for development timeline.
+> 🚧 **Work in Progress** - This project is actively under development. Current status: M2 (DOT Scalar) complete. See [ROADMAP.md](docs/ROADMAP.md) for development timeline.
 
-A comprehensive benchmarking suite for vector operations on Apple Silicon (M3) processors, comparing scalar, auto-vectorized, NEON intrinsics, and Accelerate framework implementations.
+A focused benchmarking suite for vector operations on Apple Silicon (M3) processors, comparing scalar, auto-vectorised, and NEON intrinsics implementations.
 
 ## Quick Start
 
@@ -17,15 +17,11 @@ make -j$(nproc)
 
 # Run tests
 ./test_scalar
-./test_autovec
-./test_neon
-./test_accelerate  # macOS only
+./test_dot
 
 # Run benchmarks
 ./bench_scalar
-./bench_autovec
-./bench_neon
-./bench_accelerate  # macOS only
+./bench_dot
 
 # Run comprehensive benchmark suite
 cd ..
@@ -34,25 +30,22 @@ python3 scripts/bench.py
 
 ## Project Structure
 
-- `src/`: Implementation source code organized by optimization technique
+- `src/`: Implementation source code organised by optimisation technique
 - `tests/`: Unit tests for each implementation
 - `benchmarks/`: Micro-benchmarks for performance measurement
-- `scripts/`: Python scripts for comprehensive benchmarking and visualization
+- `scripts/`: Python scripts for comprehensive benchmarking and visualisation
 - `results/`: Generated benchmark results and plots
 
 ## Development Status
 
 ### Completed Milestones ✅
-- **v0.1-scalar**: Basic AXPY scalar implementation with comprehensive testing and benchmarking
+- **M1: AXPY (Scalar)** - Basic AXPY scalar implementation with comprehensive testing and benchmarking
+- **M2: DOT (Scalar)** - Dot product scalar implementation with performance analysis
 
 ### Planned Milestones 📋
-- **v0.2-autovec**: Compiler auto-vectorization analysis
-- **v0.3-neon**: Manual NEON intrinsics implementation
-- **v0.4-compare-accelerate**: Accelerate framework integration
-- **v0.5-memory-patterns**: Memory access analysis
-- **v0.6-multi-threaded**: OpenMP parallelization
-- **v0.7-optimization**: Advanced optimizations
-- **v0.8-comprehensive**: Full benchmark suite and visualization
+- **M3: Auto-vectorisation Analysis** - Compiler optimisation exploration
+- **M4: NEON AXPY** - Manual NEON intrinsics implementation
+- **M5: Results & Analysis** - Comprehensive performance analysis and roofline model
 
 See [ROADMAP.md](docs/ROADMAP.md) for detailed development timeline and [Handoff.md](docs/Handoff.md) for milestone documentation.
 
@@ -76,7 +69,19 @@ See [ROADMAP.md](docs/ROADMAP.md) for detailed development timeline and [Handoff
 - Peak bandwidth: ~250 GB/s for small vectors, ~130 GB/s sustained
 - Time per element: ~0.1-0.2 ns, showing excellent cache efficiency
 - Performance degrades with larger vectors due to cache hierarchy effects
-- Baseline established for vectorized implementation comparison
+
+### M2: Scalar DOT Performance (Apple M3)
+
+| Vector Size | Time (ms) | GFLOPS | Bandwidth (GB/s) | Time/Element (ns) |
+|-------------|-----------|--------|------------------|-------------------|
+| 16K         | 0.001     | 15.2   | 95.1             | 0.065            |
+| 1M          | 0.067     | 14.9   | 93.2             | 0.067            |
+
+**Key Insights:**
+- Consistent ~15 GFLOPS performance across sizes
+- Read-only memory access pattern (no writes)
+- Lower bandwidth requirements compared to AXPY
+- Baseline established for vectorised implementation comparison
 
 ## Requirements
 
