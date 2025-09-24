@@ -67,9 +67,3 @@ A focused benchmarking suite for vector operations on Apple Silicon (M3) process
 - [ ] Documentation is complete and professional
 - [ ] Code is ready for public release
 
-## Notes
-- Focus on Apple M3 optimization (`-mcpu=native`)
-- Maintain human-readable, incremental commits
-- Each milestone should be independently testable
-- Keep performance measurements consistent across implementations
-- Scope reduced to 5 focused milestones for complete v1.0
