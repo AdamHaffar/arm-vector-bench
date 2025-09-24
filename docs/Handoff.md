@@ -116,8 +116,72 @@ Generated in `results/scalar_results.csv` with columns:
 
 ---
 
-## Next Milestone: M2 - DOT (Scalar)
-- Implement scalar dot product operation
-- Similar testing and benchmarking framework
-- Compare performance characteristics with AXPY
-- Expected to show different memory access patterns
+## M2: DOT (Scalar) - v0.2-dot
+
+### Files Touched
+```
+src/scalar/dot_scalar.hpp          # Scalar DOT implementation
+src/scalar/dot_scalar.cpp          # Implementation file (minimal)
+tests/test_dot.cpp                 # Comprehensive unit tests
+benchmarks/micro_bench_dot.cpp     # Performance micro-benchmarks
+CMakeLists.txt                     # Build system integration
+results/dot_results.csv            # Performance results
+```
+
+### Build Flags
+```bash
+# Compiler flags
+-O3 -mcpu=native -Wall -Wextra -pedantic
+
+# CMake configuration
+-DCMAKE_BUILD_TYPE=Release
+```
+
+### Run Commands
+```bash
+# Build project
+mkdir build && cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+make -j4
+
+# Run tests
+./test_dot
+
+# Run benchmarks
+./bench_dot
+```
+
+### Performance Results
+
+| Vector Size | Time (ms) | GFLOPS | Bandwidth (GB/s) |
+|-------------|-----------|--------|------------------|
+| 16K         | 0.001     | 32.8   | 131.2            |
+| 1M          | 0.098     | 21.4   | 85.6             |
+
+### Key Implementation Details
+- Scalar DOT product: `sum(x[i] * y[i])`
+- Read-only memory access pattern (no writes)
+- Sequential memory traversal
+- Single reduction operation
+- Potential for vectorisation optimisation
+
+---
+
+## FOR GPT: TEACH ME
+
+**Q1: Memory Access Patterns**: How does the read-only nature of DOT product affect cache utilisation compared to AXPY's read-write pattern? Why might DOT show different performance characteristics?
+
+**Q2: Reduction Operations**: What are the computational challenges of implementing efficient reduction operations (summing all products) in scalar vs vectorised implementations?
+
+**Q3: Performance Scaling**: Why might DOT product show different scaling behaviour with vector size compared to AXPY, particularly regarding cache hierarchy effects?
+
+**Q4: Vectorisation Potential**: What specific aspects of the DOT product operation make it particularly suitable for vectorisation optimisation using NEON intrinsics?
+
+**Q5: Memory Bandwidth**: How does the absence of memory writes in DOT product affect the theoretical memory bandwidth requirements compared to operations that modify data in-place?
+
+---
+
+## Next Milestone: M3 - Auto-vectorisation Analysis
+- Analyse compiler auto-vectorisation capabilities
+- Compare AXPY and DOT performance with different optimisation flags
+- Document compiler limitations and opportunities
