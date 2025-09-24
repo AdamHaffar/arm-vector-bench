@@ -39,6 +39,8 @@ target_include_directories(common_utils INTERFACE src)
 add_library(scalar_impl
     src/scalar/axpy_scalar.cpp
     src/scalar/axpy_scalar.hpp
+    src/scalar/dot_scalar.cpp
+    src/scalar/dot_scalar.hpp
 )
 
 # Auto-vectorized implementation (placeholder for v0.2)
@@ -68,6 +70,9 @@ enable_testing()
 add_executable(test_scalar tests/test_scalar.cpp)
 target_link_libraries(test_scalar scalar_impl common_utils)
 
+add_executable(test_dot tests/test_dot.cpp)
+target_link_libraries(test_dot scalar_impl common_utils)
+
 # add_executable(test_autovec tests/test_autovec.cpp)
 # target_link_libraries(test_autovec autovec_impl common_utils)
 
@@ -82,6 +87,9 @@ target_link_libraries(test_scalar scalar_impl common_utils)
 # Benchmark executables
 add_executable(bench_scalar benchmarks/micro_bench_scalar.cpp)
 target_link_libraries(bench_scalar scalar_impl common_utils)
+
+add_executable(bench_dot benchmarks/micro_bench_dot.cpp)
+target_link_libraries(bench_dot scalar_impl common_utils)
 
 # add_executable(bench_autovec benchmarks/micro_bench_autovec.cpp)
 # target_link_libraries(bench_autovec autovec_impl common_utils)
