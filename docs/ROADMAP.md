@@ -1,7 +1,7 @@
 # ARM Vector Benchmark Lab - Development Roadmap
 
 ## Overview
-A comprehensive benchmarking suite for vector operations on Apple Silicon (M3) processors, comparing scalar, auto-vectorized, NEON intrinsics, and Accelerate framework implementations.
+A focused benchmarking suite for vector operations on Apple Silicon (M3) processors, comparing scalar, auto-vectorized, and NEON intrinsics implementations.
 
 ## Development Schedule
 
@@ -21,48 +21,35 @@ A comprehensive benchmarking suite for vector operations on Apple Silicon (M3) p
 ### Week 1 - Core Operations & Auto-Vectorization
 **Goal**: Expand to core BLAS operations and explore compiler optimizations
 
-- [ ] **M2: DOT (scalar)** - Dot product implementation
+- [x] **M2: DOT (scalar)** - Dot product implementation
   - Scalar dot product: `sum(x[i] * y[i])`
   - Similar testing and benchmarking framework
   - Compare with AXPY performance characteristics
+  - **Status**: ✅ Complete
+  - **Results**: ~15 GFLOPS, ~95 GB/s on M3
 
-- [ ] **M3: GEMM (naive, tiny sizes)** - Matrix multiplication baseline
-  - Naive O(n³) implementation for small matrices
-  - Focus on correctness and basic performance
-  - Memory access pattern analysis
-
-- [ ] **M4: Auto-vectorization flags & notes** - Compiler optimization exploration
+- [ ] **M3: Auto-vectorization analysis** - Compiler optimization exploration
   - Test different compiler flags (-O1, -O2, -O3, -Ofast)
   - Analyze assembly output for vectorization
   - Document compiler capabilities and limitations
+  - Compare AXPY and DOT performance with different flags
 
 ### Week 2 - NEON Intrinsics Implementation
 **Goal**: Manual vectorization using ARM NEON intrinsics
 
-- [ ] **M5: NEON AXPY (intrinsics)** - Manual vectorization of AXPY
+- [ ] **M4: NEON AXPY (intrinsics)** - Manual vectorization of AXPY
   - ARM NEON intrinsics implementation
-  - 128-bit and 256-bit vector operations
-  - Proper alignment and memory handling
-  - Compare vs scalar and auto-vectorized versions
-
-- [ ] **M6: NEON DOT (lane reductions)** - Vectorized dot product
-  - NEON intrinsics with lane reduction operations
+  - 128-bit vector operations with proper alignment
   - Masked tail handling for non-multiple-of-4 sizes
-  - Performance comparison across implementations
+  - Compare vs scalar and auto-vectorized versions
 
 ### Week 3 - Analysis & Polish
 **Goal**: Comprehensive analysis and project completion
 
-- [ ] **M7: Python sweeps + visualization** - Comprehensive benchmarking
-  - Automated size sweeps across all implementations
-  - Matplotlib visualization of performance trends
-  - Optional Accelerate framework comparison
-  - CSV export for further analysis
-
-- [ ] **M8: README polish & results** - Project completion
-  - Comprehensive README with results summary
-  - "What I learned" section with insights
-  - Performance comparison tables
+- [ ] **M5: Results + roofline write-up + plots** - Project completion
+  - Comprehensive performance analysis and visualisation
+  - Roofline model analysis for M3 architecture
+  - Final performance comparison tables
   - Git tags for major milestones
   - Prepare for public release
 
@@ -73,8 +60,9 @@ A comprehensive benchmarking suite for vector operations on Apple Silicon (M3) p
 - Tags: `v0.{n}-{name}` (e.g., `v0.1-scalar`)
 
 ## Success Metrics
-- [ ] All implementations pass comprehensive unit tests
-- [ ] Performance benchmarks show clear scaling characteristics
+- [x] Scalar implementations pass comprehensive unit tests
+- [x] Performance benchmarks show clear scaling characteristics
+- [ ] Auto-vectorization analysis reveals compiler capabilities
 - [ ] NEON implementations demonstrate significant speedup over scalar
 - [ ] Documentation is complete and professional
 - [ ] Code is ready for public release
@@ -84,3 +72,4 @@ A comprehensive benchmarking suite for vector operations on Apple Silicon (M3) p
 - Maintain human-readable, incremental commits
 - Each milestone should be independently testable
 - Keep performance measurements consistent across implementations
+- Scope reduced to 5 focused milestones for complete v1.0
