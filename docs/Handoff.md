@@ -100,11 +100,11 @@ Generated in `results/scalar_results.csv` with columns:
 
 ---
 
-## FOR GPT: TEACH ME
+## Technical Analysis Questions
 
 **Q1: Memory Access Patterns**: Why does our scalar AXPY implementation show decreasing GFLOPS as vector size increases (from ~35 GFLOPS at 16K elements to ~12 GFLOPS at 16M elements)? What role does cache hierarchy play in this performance degradation?
 
-**Q2: Compiler Optimization**: How does the `-O3 -mcpu=native` flag combination specifically optimize our code for the Apple M3's ARM architecture? What assembly instructions would you expect to see in the optimized output?
+**Q2: Compiler Optimisation**: How does the `-O3 -mcpu=native` flag combination specifically optimise our code for the Apple M3's ARM architecture? What assembly instructions would you expect to see in the optimised output?
 
 **Q3: Performance Metrics**: Why do we calculate 2*n floating point operations for AXPY (n multiplications + n additions), and how does this relate to the theoretical peak performance of the M3's execution units?
 
@@ -112,7 +112,7 @@ Generated in `results/scalar_results.csv` with columns:
 
 **Q5: Timing Precision**: Why did we choose `std::chrono::high_resolution_clock` over other timing mechanisms, and what are the potential sources of timing noise in micro-benchmarking that could affect our measurements?
 
-**Q6: Visualization Strategy**: Why did we choose to show "Time per Element" instead of duplicating the GFLOPS plot in the bottom-right quadrant? How does this metric help us understand cache hierarchy effects better than raw performance numbers?
+**Q6: Visualisation Strategy**: Why did we choose to show "Time per Element" instead of duplicating the GFLOPS plot in the bottom-right quadrant? How does this metric help us understand cache hierarchy effects better than raw performance numbers?
 
 ---
 
