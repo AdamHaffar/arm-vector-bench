@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Comprehensive benchmarking script for ARM Vector Benchmark Lab
-Runs size sweeps, generates CSV output, and creates visualizations
+Runs size sweeps, generates CSV output, and creates visualisations
 """
 
 import subprocess
@@ -186,7 +186,7 @@ class BenchmarkRunner:
                     sizes = scalar_data[:, 0]
                     times = scalar_data[:, 1]
                     time_per_element = (times * 1000) / sizes  # Convert to nanoseconds per element
-                    plt.semilogx(sizes, time_per_element, 'o-', color='red', linewidth=2, label='Time per Element')
+                    plt.semilogx(sizes, time_per_element, 'o-', colour='red', linewidth=2, label='Time per Element')
                     plt.xlabel('Vector Size')
                     plt.ylabel('Time per Element (ns)')
                     plt.title('Time per Element vs Vector Size')
@@ -223,7 +223,7 @@ def main():
         print("No benchmarks were successfully run.")
         return 1
     
-    # Create visualizations
+    # Create visualisations
     runner.create_plots()
     
     print("\n=== Benchmarking Complete ===")

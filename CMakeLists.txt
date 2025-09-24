@@ -5,12 +5,12 @@ project(ArmVectorBenchmark VERSION 0.1.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Compiler-specific flags for ARM optimization
+# Compiler-specific flags for ARM optimisation
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     set(CMAKE_CXX_FLAGS_RELEASE "-O3 -mcpu=native -Wall -Wextra -pedantic")
     set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g -Wall -Wextra -pedantic")
 else()
-    message(WARNING "clang++ recommended for ARM optimization")
+    message(WARNING "clang++ recommended for ARM optimisation")
     set(CMAKE_CXX_FLAGS_RELEASE "-O3 -Wall -Wextra -pedantic")
     set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g -Wall -Wextra -pedantic")
 endif()
@@ -43,7 +43,7 @@ add_library(scalar_impl
     src/scalar/dot_scalar.hpp
 )
 
-# Auto-vectorized implementation (placeholder for v0.2)
+# Auto-vectorised implementation (placeholder for v0.2)
 # add_library(autovec_impl
 #     src/autovec/axpy_autovec.cpp
 #     src/autovec/axpy_autovec.hpp

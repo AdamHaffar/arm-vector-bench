@@ -1,7 +1,7 @@
 # ARM Vector Benchmark Lab - Development Roadmap
 
 ## Overview
-A focused benchmarking suite for vector operations on Apple Silicon (M3) processors, comparing scalar, auto-vectorized, and NEON intrinsics implementations.
+A focused benchmarking suite for vector operations on Apple Silicon (M3) processors, comparing scalar, auto-vectorised, and NEON intrinsics implementations.
 
 ## Development Schedule
 
@@ -13,13 +13,13 @@ A focused benchmarking suite for vector operations on Apple Silicon (M3) process
   - High-resolution timing utilities
   - Unit tests covering edge cases and correctness
   - Micro-benchmarking suite with GFLOPS/bandwidth metrics
-  - CMake build system with ARM optimization flags
+  - CMake build system with ARM optimisation flags
   - Python benchmarking infrastructure
   - **Status**: ✅ Complete
   - **Results**: ~21 GFLOPS, ~130 GB/s on M3
 
-### Week 1 - Core Operations & Auto-Vectorization
-**Goal**: Expand to core BLAS operations and explore compiler optimizations
+### Week 1 - Core Operations & Auto-vectorisation
+**Goal**: Expand to core BLAS operations and explore compiler optimisations
 
 - [x] **M2: DOT (scalar)** - Dot product implementation
   - Scalar dot product: `sum(x[i] * y[i])`
@@ -28,20 +28,20 @@ A focused benchmarking suite for vector operations on Apple Silicon (M3) process
   - **Status**: ✅ Complete
   - **Results**: ~15 GFLOPS, ~95 GB/s on M3
 
-- [ ] **M3: Auto-vectorization analysis** - Compiler optimization exploration
+- [ ] **M3: Auto-vectorisation analysis** - Compiler optimisation exploration
   - Test different compiler flags (-O1, -O2, -O3, -Ofast)
-  - Analyze assembly output for vectorization
+  - Analyse assembly output for vectorisation
   - Document compiler capabilities and limitations
   - Compare AXPY and DOT performance with different flags
 
 ### Week 2 - NEON Intrinsics Implementation
-**Goal**: Manual vectorization using ARM NEON intrinsics
+**Goal**: Manual vectorisation using ARM NEON intrinsics
 
-- [ ] **M4: NEON AXPY (intrinsics)** - Manual vectorization of AXPY
+- [ ] **M4: NEON AXPY (intrinsics)** - Manual vectorisation of AXPY
   - ARM NEON intrinsics implementation
   - 128-bit vector operations with proper alignment
   - Masked tail handling for non-multiple-of-4 sizes
-  - Compare vs scalar and auto-vectorized versions
+  - Compare vs scalar and auto-vectorised versions
 
 ### Week 3 - Analysis & Polish
 **Goal**: Comprehensive analysis and project completion
@@ -62,7 +62,7 @@ A focused benchmarking suite for vector operations on Apple Silicon (M3) process
 ## Success Metrics
 - [x] Scalar implementations pass comprehensive unit tests
 - [x] Performance benchmarks show clear scaling characteristics
-- [ ] Auto-vectorization analysis reveals compiler capabilities
+- [ ] Auto-vectorisation analysis reveals compiler capabilities
 - [ ] NEON implementations demonstrate significant speedup over scalar
 - [ ] Documentation is complete and professional
 - [ ] Code is ready for public release

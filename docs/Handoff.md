@@ -93,9 +93,9 @@ Generated in `results/scalar_results.csv` with columns:
 - Inlined scalar implementation for maximum performance
 - High-resolution timing using `std::chrono::high_resolution_clock`
 - Comprehensive test coverage including edge cases
-- Modular design ready for vectorized implementations
-- ARM-optimized compiler flags for Apple Silicon
-- **Improved Python Benchmarking**: Fixed CSV parsing and enhanced visualization
+- Modular design ready for vectorised implementations
+- ARM-optimised compiler flags for Apple Silicon
+- **Improved Python Benchmarking**: Fixed CSV parsing and enhanced visualisation
 - **4-Plot Analysis**: Time scaling, GFLOPS performance, memory bandwidth, and time-per-element efficiency
 
 ---

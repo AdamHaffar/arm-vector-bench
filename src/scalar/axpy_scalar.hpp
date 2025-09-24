@@ -4,7 +4,7 @@
 
 /**
  * Scalar implementation of AXPY operation: y = a * x + y
- * This is the baseline implementation without any vectorization
+ * This is the baseline implementation without any vectorisation
  */
 class AxpyScalar {
 public:
