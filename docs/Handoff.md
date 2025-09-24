@@ -100,22 +100,6 @@ Generated in `results/scalar_results.csv` with columns:
 
 ---
 
-## Technical Analysis Questions
-
-**Q1: Memory Access Patterns**: Why does our scalar AXPY implementation show decreasing GFLOPS as vector size increases (from ~35 GFLOPS at 16K elements to ~12 GFLOPS at 16M elements)? What role does cache hierarchy play in this performance degradation?
-
-**Q2: Compiler Optimisation**: How does the `-O3 -mcpu=native` flag combination specifically optimise our code for the Apple M3's ARM architecture? What assembly instructions would you expect to see in the optimised output?
-
-**Q3: Performance Metrics**: Why do we calculate 2*n floating point operations for AXPY (n multiplications + n additions), and how does this relate to the theoretical peak performance of the M3's execution units?
-
-**Q4: Memory Bandwidth**: Our benchmark shows ~130 GB/s memory bandwidth. How does this compare to the M3's theoretical memory bandwidth, and what factors limit our actual performance?
-
-**Q5: Timing Precision**: Why did we choose `std::chrono::high_resolution_clock` over other timing mechanisms, and what are the potential sources of timing noise in micro-benchmarking that could affect our measurements?
-
-**Q6: Visualisation Strategy**: Why did we choose to show "Time per Element" instead of duplicating the GFLOPS plot in the bottom-right quadrant? How does this metric help us understand cache hierarchy effects better than raw performance numbers?
-
----
-
 ## M2: DOT (Scalar) - v0.2-dot
 
 ### Files Touched
@@ -164,20 +148,6 @@ make -j4
 - Sequential memory traversal
 - Single reduction operation
 - Potential for vectorisation optimisation
-
----
-
-## Technical Analysis Questions
-
-**Q1: Memory Access Patterns**: How does the read-only nature of DOT product affect cache utilisation compared to AXPY's read-write pattern? Why might DOT show different performance characteristics?
-
-**Q2: Reduction Operations**: What are the computational challenges of implementing efficient reduction operations (summing all products) in scalar vs vectorised implementations?
-
-**Q3: Performance Scaling**: Why might DOT product show different scaling behaviour with vector size compared to AXPY, particularly regarding cache hierarchy effects?
-
-**Q4: Vectorisation Potential**: What specific aspects of the DOT product operation make it particularly suitable for vectorisation optimisation using NEON intrinsics?
-
-**Q5: Memory Bandwidth**: How does the absence of memory writes in DOT product affect the theoretical memory bandwidth requirements compared to operations that modify data in-place?
 
 ---
 
