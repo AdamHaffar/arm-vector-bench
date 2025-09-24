@@ -167,7 +167,7 @@ make -j4
 
 ---
 
-## FOR GPT: TEACH ME
+## Technical Analysis Questions
 
 **Q1: Memory Access Patterns**: How does the read-only nature of DOT product affect cache utilisation compared to AXPY's read-write pattern? Why might DOT show different performance characteristics?
 
