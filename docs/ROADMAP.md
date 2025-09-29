@@ -53,12 +53,6 @@ A focused benchmarking suite for vector operations on Apple Silicon (M3) process
   - Git tags for major milestones
   - Prepare for public release
 
-## Milestone Naming Convention
-- Feature branches: `m{n}-{short-name}` (e.g., `m1-axpy-scalar`)
-- Commits: Small, incremental changes (1-3 per day max)
-- PRs: Squash-merge milestone PRs
-- Tags: `v0.{n}-{name}` (e.g., `v0.1-scalar`)
-
 ## Success Metrics
 - [x] Scalar implementations pass comprehensive unit tests
 - [x] Performance benchmarks show clear scaling characteristics
