@@ -59,5 +59,4 @@ A focused benchmarking suite for vector operations on Apple Silicon (M3) process
 - [ ] Auto-vectorisation analysis reveals compiler capabilities
 - [ ] NEON implementations demonstrate significant speedup over scalar
 - [ ] Documentation is complete and professional
-- [ ] Code is ready for public release
 
